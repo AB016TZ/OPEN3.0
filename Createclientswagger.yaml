@@ -1,0 +1,1134 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Dynamic apis",
+    "description": "List of dynamic apis"
+  },
+  "paths": {
+    "/clients": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "service for creating client",
+        "responses": {
+          "200": {
+            "description": "Response body example",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateClientResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Response body example",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorHandling"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "header",
+            "name": "coresuite-datasource-key",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "coresuite-user-name",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body example",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClientRequest"
+              }
+            }
+          }
+        },
+        "operationId": "createClients"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateClientRequest": {
+        "title": "CreateClientRequest",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "middleName": {
+            "type": "string"
+          },
+          "surName": {
+            "type": "string"
+          },
+          "secondSurname": {
+            "type": "string"
+          },
+          "title": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "maidenName": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "nationalInsuranceType": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "nationalInsuranceCountry": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "isoCode ": {
+                "type": "string"
+              }
+            }
+          },
+          "nationalInsuranceReference": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "smokerStatus": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "occupation": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "personStatus": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "clientType": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "preferredLanguage": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "familyStatus": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "normalRetirementAge": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "externalClientId": {
+            "type": "string"
+          },
+          "certification": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "suffix": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "countryOfBirth": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "alternativeName": {
+            "type": "string"
+          },
+          "nonDriverFlag": {
+            "type": "boolean",
+            "default": false
+          },
+          "driverLicenseNumber": {
+            "type": "string"
+          },
+          "driverLicenseState": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "addressDetails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "openingEffectiveDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "addressType": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "mainAddressFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "houseNumber": {
+                  "type": "string"
+                },
+                "houseName": {
+                  "type": "string"
+                },
+                "address1": {
+                  "type": "string"
+                },
+                "address2": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "postCode": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isoCode": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "province": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "postOfficeBox": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "plus4": {
+                  "type": "string"
+                },
+                "addressUnknown": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "municipality": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "contactDetails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "openingEffectiveDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "contactType": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "mainContactFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "countryCode": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isoCode": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "invalidPhoneFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "mobile": {
+                  "type": "string"
+                },
+                "invalidMobileFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "email": {
+                  "type": "string"
+                },
+                "invalidEmailFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "fax": {
+                  "type": "string"
+                },
+                "invalidFaxFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "fromContactHour": {
+                  "type": "string",
+                  "format": "date-time",
+                  "default": "00:00"
+                },
+                "toContactHour": {
+                  "type": "string",
+                  "format": "date-time",
+                  "default": "00:00"
+                },
+                "contactDefaultMethod": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "paymentArrangements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "openingEffectiveDate": {
+                  "type": "string",
+                  "format": "date",
+                  "default": "1950-01-01"
+                },
+                "arrangementId": {
+                  "type": "integer"
+                },
+                "arrangementType": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "arrangementName": {
+                  "type": "string"
+                },
+                "paymentMethod": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "mainArrangementFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "currency": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "symbol": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "paymentFrequency": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "paymentDay": {
+                  "type": "integer"
+                },
+                "paymentMonth": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "brand": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "collectionInAdvanceFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "externalBillingId": {
+                  "type": "string"
+                },
+                "billing": {
+                  "type": "object",
+                  "properties": {
+                    "billingNotice": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "billingFormat": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "billingMethod": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "billingMedia": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "leadTime": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "bankAccount": {
+                  "type": "object",
+                  "properties": {
+                    "ibanAcctNo": {
+                      "type": "string"
+                    },
+                    "accountName": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "isoCode": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "accountType": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "sortCode": {
+                      "type": "string"
+                    },
+                    "authorization": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "bicCode": {
+                      "type": "string"
+                    },
+                    "bankName": {
+                      "type": "string"
+                    },
+                    "bankBranch": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "mandate": {
+                  "type": "object",
+                  "properties": {
+                    "mandateType": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "mandateStatus": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "mandateId": {
+                      "type": "string"
+                    },
+                    "mandateStartDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "mandateEndDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "mandateReasonCode": {
+                      "type": "string"
+                    },
+                    "mandateBatchSendRef": {
+                      "type": "string"
+                    },
+                    "mandateRefusalBatchRef": {
+                      "type": "string"
+                    },
+                    "soleAuthorisedSignatoryFlag": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "creditCardDetails": {
+                  "type": "object",
+                  "properties": {
+                    "cardType": {
+                      "type": "integer"
+                    },
+                    "cardStatus": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "cardNumber": {
+                      "type": "string"
+                    },
+                    "transactionType": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "expiryDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "statusDate": {
+                      "type": "string",
+                      "format": "date"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "linkagesDetails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "linkageType": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "clientId": {
+                  "type": "integer"
+                },
+                "externalClientId": {
+                  "type": "string"
+                },
+                "linkageName": {
+                  "type": "string"
+                },
+                "openingEffectiveDate": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            }
+          },
+          "foreignTaxLiability": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "cityOfBirth": {
+            "type": "string"
+          },
+          "taxJurisdictionDetails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "taxJurisdiction": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "foreignIdType": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "foreignIdDescription": {
+                  "type": "string"
+                },
+                "reasonNoTin": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalInformation": {
+                  "type": "string"
+                },
+                "foreignEffectiveDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "foreignExpiryDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "foreignCountryOfIdIssue": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "foreignFtrStatus": {
+                  "type": "string"
+                },
+                "foreignFtrClassification": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "lettersRecipients": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "letterCode": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "recipientType": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "role": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "recipientsGroup": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "addressType": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "noOfCopies": {
+                  "type": "integer"
+                },
+                "copyCode": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "linkage": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "priorityInGroup": {
+                  "type": "integer"
+                },
+                "emailFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "postFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "faxFlag": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "mandatoryFlag": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "noteText": {
+                  "type": "string"
+                },
+                "registrationDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "userId": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "statusNotes": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "entityItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "entitySecondSubType": {
+                  "type": "integer"
+                },
+                "entitySubType": {
+                  "type": "integer"
+                },
+                "entityType": {
+                  "type": "integer"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "entityNo": {
+                  "type": "integer"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "type": "object"
+      },
+      "errorHandling": {
+        "title": "errorHandling",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rowNo": {
+                  "type": "number"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "type": "object"
+      },
+      "CreateClientResponse": {
+        "title": "CreateClientResponse",
+        "properties": {
+          "primaryKey": {
+            "type": "integer"
+          },
+          "primaryKeyType": {
+            "type": "integer"
+          },
+          "secondaryKey": {
+            "type": "string"
+          },
+          "secondaryKeyType": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}
